@@ -10,6 +10,7 @@ import settings
 
 from .models.base import BaseModel
 from .models.user import User, get_user, create_user
+from .models.companies import Company, Location
 
 
 def create_async_engine(url: Union[URL, str]) -> AsyncEngine:
