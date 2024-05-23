@@ -1,5 +1,4 @@
 import asyncio
-import logging
 import os
 
 from aiogram import Dispatcher
@@ -12,14 +11,7 @@ from botinstance import bot_instance
 from bot import register_user_commands, bot_commands
 from db import create_async_engine, get_session_maker, proceed_schemas, BaseModel
 from settings import DB_CONNECTION_STRING
-from loader import dp
-
-filepath = '/home/wolfychan/logs/'
-if not os.path.exists(filepath):
-    os.mkdir(filepath)
-
-# dp = Dispatcher()
-''' Разобраться с DialogManager '''
+from loader import dp, logger
 
 
 async def main() -> None:
@@ -40,6 +32,8 @@ async def main() -> None:
 
 if __name__ == "__main__":
     try:
+        logger.info('Bot start polling')
         asyncio.run(main())
     except (KeyboardInterrupt, SystemExit):
         print('Bot stopped')
+        logger.info('Bot stopped')
